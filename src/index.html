@@ -9,7 +9,7 @@ path: home
 
   {% for post in postslist | reverse %}
       <a href="{{ post.url | url }}" class="bg-grey1 relative aspect-square rounded-3xl overflow-hidden group">
-        {% if {{post.data.image}} %}
+        {% if post.data.image %}
           <img class="transition-all group-hover:scale-110 aspect-square object-cover" src="{{post.data.image}}">
         {% endif %}
         <div class="transition-all bg-gradient-to-r from-bg backdrop-blur  shadow-md font-bold text-lg  px-5 py-3 rounded-full absolute left-2  bottom-2 right-2">
