@@ -1,22 +1,21 @@
 ---
 layout: default
-title: Neat Starter
+title: Lol
 path: home
 ---
 
-<div class="container mx-auto lg:h-screen flex flex-col justify-center items-center">
-  <h1>
-    Welcome to
-    <strong class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-      {{title}}
-    </strong>
-  </h1>
+<section class="grid grid-cols-4 gap-8">
+  {% set postslist = collections.post %}
 
-  <p>
-    <abbr title="netlify cms, eleventy, alpine js & tailwind css">NEAT</abbr>
-    Starter Template. Get Started by editing.
-    <code class="bg-gray-100 text-blue-800 p-1">/index.njk</code>
-  </p>
+  {% for post in postslist | reverse %}
+      <a href="{{ post.url | url }}" class="bg-grey1 relative aspect-square rounded-3xl overflow-hidden group">
+        {% if {{post.data.image}} %}
+          <img class="transition-all group-hover:scale-110 aspect-square object-cover" src="{{post.data.image}}">
+        {% endif %}
+        <div class="transition-all bg-gradient-to-r from-bg backdrop-blur  shadow-md font-bold text-lg  px-5 py-3 rounded-full absolute left-2  bottom-2 right-2">
+          {{post.data.title}}
+        </div>
 
-  {% include "./_includes/partials/content.html" %}
-</div>
+        </a>
+  {% endfor %}
+</section>
